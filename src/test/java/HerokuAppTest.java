@@ -26,11 +26,11 @@ public class HerokuAppTest {
     }
 
     @Test
-    public void test_herokuApp(String arg) {
-//        final String arg = "Broken Images";
+    public void test_herokuApp() {
+        String linkName = System.getProperty("linkName");
         List<WebElement> listOfElements = driver.findElements(By.xpath(LINKS_LOCATOR));
-        Assert.assertTrue("Link's name not found", listOfElements.stream().map(WebElement::getText).anyMatch(e -> e.equals(arg)));
-        driver.findElement(By.xpath(LINKS_LOCATOR_BY_TEXT.replace("$1", arg))).click();
+        Assert.assertTrue("Link's name not found", listOfElements.stream().map(WebElement::getText).anyMatch(e -> e.equals(linkName)));
+        driver.findElement(By.xpath(LINKS_LOCATOR_BY_TEXT.replace("$1", linkName))).click();
     }
 
     @AfterClass
